@@ -1,0 +1,155 @@
+========================================= FINAL SPARQL QUERIES =====================================================
+=====================================================================================================================
+======================================================================================================================
+
+1. Origin of Trance Music 
+
+PREFIX dbpediao: <http://dbpedia.org/ontology/>
+
+
+select STRAFTER(STR(?name),"http://dbpedia.org/resource/") as ?Name
+       STR(?name) as ?DBpedia_link
+       COALESCE(STRAFTER(STR(?birthplace),"http://dbpedia.org/resource/"),"Bloomington") as ?birthplace 
+       ?bdate
+ WHERE {
+         SELECT ?name as ?name
+                # ?t_name
+                max(?birthplace) as ?birthplace 
+                max(STR(?bdate)) as ?bdate
+         WHERE {
+  
+                {  
+        ?name a dbpediao:MusicalArtist.
+        ?name foaf:givenName ?givenname.
+
+        optional { ?name dbo:birthDate ?bdate.}
+        optional { ?name dbp:birthPlace ?birthplace.
+                  ?birthplace a dbo:Place }.
+        optional { ?name dbo:hometown ?birthplace .
+                   ?birthplace a dbo:Place}.
+        optional { ?name dbo:birthPlace ?birthplace .
+                   ?birthplace a dbo:Location}.
+        
+        ?name dbpediao:genre ?genre.
+        ?genre dbp:name ?t_name.
+        FILTER regex(?t_name,"^trance","i").
+        } 
+	   }
+group by ?name
+
+}
+
+
+2. Origin of Techno Music 
+
+PREFIX dbpediao: <http://dbpedia.org/ontology/>
+
+
+select STRAFTER(STR(?name),"http://dbpedia.org/resource/") as ?Name
+       STR(?name) as ?DBpedia_link
+       COALESCE(STRAFTER(STR(?birthplace),"http://dbpedia.org/resource/"),"Bloomington") as ?birthplace 
+       ?bdate
+ WHERE {
+         SELECT ?name as ?name
+                # ?t_name
+                max(?birthplace) as ?birthplace 
+                max(STR(?bdate)) as ?bdate
+         WHERE {
+  
+                {  
+        ?name a dbpediao:MusicalArtist.
+        ?name foaf:givenName ?givenname.
+
+        optional { ?name dbo:birthDate ?bdate.}
+        optional { ?name dbp:birthPlace ?birthplace.
+                  ?birthplace a dbo:Place }.
+        optional { ?name dbo:hometown ?birthplace .
+                   ?birthplace a dbo:Place}.
+        optional { ?name dbo:birthPlace ?birthplace .
+                   ?birthplace a dbo:Location}.
+        
+        ?name dbpediao:genre ?genre.
+        ?genre dbp:name ?t_name.
+        FILTER regex(?t_name,"^techno","i").
+        } 
+	   }
+group by ?name
+
+}
+
+3. Origin of dubstep Music 
+
+PREFIX dbpediao: <http://dbpedia.org/ontology/>
+
+
+select STRAFTER(STR(?name),"http://dbpedia.org/resource/") as ?Name
+       STR(?name) as ?DBpedia_link
+       COALESCE(STRAFTER(STR(?birthplace),"http://dbpedia.org/resource/"),"Bloomington") as ?birthplace 
+       ?bdate
+ WHERE {
+         SELECT ?name as ?name
+                # ?t_name
+                max(?birthplace) as ?birthplace 
+                max(STR(?bdate)) as ?bdate
+         WHERE {
+  
+                {  
+        ?name a dbpediao:MusicalArtist.
+        ?name foaf:givenName ?givenname.
+
+        optional { ?name dbo:birthDate ?bdate.}
+        optional { ?name dbp:birthPlace ?birthplace.
+                  ?birthplace a dbo:Place }.
+        optional { ?name dbo:hometown ?birthplace .
+                   ?birthplace a dbo:Place}.
+        optional { ?name dbo:birthPlace ?birthplace .
+                   ?birthplace a dbo:Location}.
+        
+        ?name dbpediao:genre ?genre.
+        ?genre dbp:name ?t_name.
+        FILTER regex(?t_name,"^dubstep","i").
+        } 
+	   }
+group by ?name
+
+}
+
+4. Origin of metal Music 
+
+PREFIX dbpediao: <http://dbpedia.org/ontology/>
+
+
+select STRAFTER(STR(?name),"http://dbpedia.org/resource/") as ?Name
+       STR(?name) as ?DBpedia_link
+       COALESCE(STRAFTER(STR(?birthplace),"http://dbpedia.org/resource/"),"Bloomington") as ?birthplace 
+       ?bdate
+ WHERE {
+         SELECT ?name as ?name
+                # ?t_name
+                max(?birthplace) as ?birthplace 
+                max(STR(?bdate)) as ?bdate
+         WHERE {
+  
+                {  
+        ?name a dbpediao:MusicalArtist.
+        ?name foaf:givenName ?givenname.
+
+        optional { ?name dbo:birthDate ?bdate.}
+        optional { ?name dbp:birthPlace ?birthplace.
+                  ?birthplace a dbo:Place }.
+        optional { ?name dbo:hometown ?birthplace .
+                   ?birthplace a dbo:Place}.
+        optional { ?name dbo:birthPlace ?birthplace .
+                   ?birthplace a dbo:Location}.
+        
+        ?name dbpediao:genre ?genre.
+        ?genre dbp:name ?t_name.
+        FILTER regex(?t_name,"^metal","i").
+        } 
+	   }
+group by ?name
+
+}
+
+
+
